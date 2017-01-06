@@ -3,6 +3,10 @@ module ApplicationHelper
     resource.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
   end
 
+  def email_name email
+    email[0...(email.index("@"))]
+  end
+
   def resource_name
     :user
   end
@@ -28,5 +32,9 @@ module ApplicationHelper
       flash[:danger] = t("require_admin")
       redirect_to root_url
     end
+  end
+
+  def manager_club club
+    user_club = (club.user_clubs.find_by is_manager: true).user
   end
 end

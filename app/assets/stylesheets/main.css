@@ -1,25 +1,3 @@
-/*
- *  Document   : main.css
- *  Author   : pixelcave
- *  Description: The main stylesheet of the template
- *
- *  Structure (with shortcodes):
- *    (#m01mls) MAIN LAYOUT
- *    (#m02hds) HEADER
- *    (#m03mcs) MAIN CONTENT
- *    (#m04bos) BOOTSTRAP OVERWRITE/EXTEND STYLES
- *    (#m05ths) THEME
- *    (#m06hes) HELPERS
- *    (#m07res) RESPONSIVE
- *    (#m08rts) RETINA
- */
-/*
-=================================================================
-(#m01mls) MAIN LAYOUT
-=================================================================
-*/
-/* Include Open Sans font from Google Web Fonts */
-
 @import url('http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic');
 body {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1703,4 +1681,33 @@ li:last-child {
   margin-top: 0px!important;
   border: solid 1px red;
   border-color: #dddddd;
+}
+.circle-profile-list {
+width: 100px;
+height: 100px;
+background: red;
+-moz-border-radius: 50px;
+-webkit-border-radius: 50px;
+border-radius: 1000px;
+}
+.circle-profile {
+width: 200px;
+height: 200px;
+background: red;
+-moz-border-radius: 50px;
+-webkit-border-radius: 50px;
+border-radius: 1000px;
+}
+.center {
+  text-align: center;
+}
+.sugest-clubs{
+background-color:cyan!important;
+}
+.border-white-50{
+  border-bottom: solid 1px rgba(255,255,255,0.3);
+}
+.small-event-image{
+width:70px!important;
+height:70px!important;
 }
