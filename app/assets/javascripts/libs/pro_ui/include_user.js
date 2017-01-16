@@ -4,12 +4,17 @@ $(document).on('turbolinks:load', function() {
     $("#new_user_event").submit();
   });
   $("#request-type").click(function() {
-    $.post(
-      "/request", {
-        type: $(this).val()
-      },
-      function(data) {}
-    );
+    if ($(this).val()==="Club"){
+      $.get(
+        "/users/1/club_requests", {},
+        function(data) {}
+      );
+    }else{
+      $.get(
+        "/users/1/organization_requests", {},
+        function(data) {}
+      );
+    }
   });
 
   App.init();

@@ -1,0 +1,12 @@
+<%= link_to current_user, class: "pull-left" do %>
+  <%= image_tag current_user.avatar, class: "img-circle img-user-time-line-small" %>
+<% end %>
+<div class="media-body">
+  <%= form_for Comment.new, remote: true do |f| %>
+    <%= f.text_area :content, id: "profile-newsfeed-comment",
+      class: "form-control", rows: 2, placeholder: t("your_comment") %>
+      <%= f.hidden_field :target_id, value: target.id %>
+      <%= f.hidden_field :target_type, value: target.class.name %>
+      <%= f.submit t("post_comment"), class: "btn btn-xs btn-primary pull-right" %>
+  <% end %>
+</div>

@@ -1,7 +1,7 @@
 <% @clubs.each do |club| %>
-  <% club.activities.each do |active| %>
+  <% club.activities.each do |activity| %>
     <li class="media">
-      <%= image_tag active.person_target.avatar,
+      <%= image_tag activity.person_target.avatar,
         class: "img-circle pull-left img-user-time-line" %>
       <div class="media-body">
         <p class="push-none">
@@ -11,21 +11,28 @@
               </span>
             </span>
             <strong>
-              <%= link_to active.person_target.full_name, active.person_target %>
-              <%= t "has_been" %> <%= active.action %> <%= t "in_the" %>
-              <span class="text-danger"><%= active.target.name %></span>
+              <%= link_to activity.person_target.full_name, activity.person_target %>
+              <%= t "has_been" %> <%= activity.action %> <%= t "in_the" %>
+              <span class="text-danger"><%= activity.target.name %></span>
             </strong>
         </p>
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+              <%= link_to club, {"data-toggle": "lightbox-image"} do %>
+                <%= image_tag club.image, class: "img-responsive" %>
+              <% end %>
+            </div>
+        </div>
         <a href="javascript:void(0)" class="btn btn-xs btn-default btn-like">
           <i class="fa fa-thumbs-o-up"></i> <%= t "like" %>
         </a>
         <a href="javascript:void(0)"
-          class="btn btn-xs btn-default btn-comment" id="<%= active.id %>">
+          class="btn btn-xs btn-default btn-comment" id="<%= activity.id %>">
           <i class="fa fa-comments-o"></i> <%= t "comment" %>
         </a>
-        <div class="list-comment-time-line-<%= active.id %>">
-          <%= render partial: "time_line_homes/comments",
-            locals: {active: active} %>
+        <div class="list-comment-time-line-<%= activity.id %>">
+          <%= render partial: "time_line_homes/list_comments",
+            locals: {activity: activity} %>
         </div>
       </div>
     </li>

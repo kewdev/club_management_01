@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/show'
+
   mount Ckeditor::Engine => '/ckeditor'
   root "static_pages#index"
   delete "join_event" => "user_events#destroy"
@@ -40,8 +42,10 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resources :club_requests, only: [:new, :create, :index]
-    resources :organization_requests, only: [:new, :create, :index]
+    resources :club_requests, only: [:new, :create, :index, :destroy]
+    resources :organization_requests, only: [:new, :create, :index, :destroy]
+    resources :clubs, only: :index
+    resources :other_clubs, only: :index
   end
 
   resources :clubs, only: :show do
@@ -53,4 +57,5 @@ Rails.application.routes.draw do
   resources :organizations, only: :show
   resources :time_line_homes
   resources :comments
+  resources :users, only: :show
 end

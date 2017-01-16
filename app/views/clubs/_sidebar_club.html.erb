@@ -22,8 +22,8 @@
             <i class="fa fa-angle-down site-nav-arrow"></i><%= t "clubs" %>
           <% end %>
           <ul>
-            <li><%= link_to t("my_club"), "#" %></li>
-            <li><%= link_to t("other_club"), "#" %></li>
+            <li><%= link_to t("my_club"), user_clubs_path(user_id: current_user.id) %></li>
+            <li><%= link_to t("other_club"), user_other_clubs_path(user_id: current_user.id) %></li>
           </ul>
         </li>
         <li>
@@ -35,7 +35,7 @@
               new_user_club_request_url(user_id: current_user.id) %>
             </li>
             <li><%= link_to t("organization_request"),
-              new_user_club_request_url(user_id: current_user.id) %>
+              new_user_organization_request_url(user_id: current_user.id) %>
             </li>
             <li><%= link_to t("list_request"), "#modal-request-question",
               data: {toggle: "modal"}, class: "enable-tooltip"  %>
@@ -59,7 +59,7 @@
             <%= current_user.full_name %> <span class="fa fa-user"></span>
           <% end %>
           <ul>
-            <li><%= link_to t("profile"), "#" %></li>
+            <li><%= link_to t("profile"), current_user %></li>
             <li><%= link_to t("log_out"), destroy_user_session_path, method: :delete %></li>
           </ul>
         </li>

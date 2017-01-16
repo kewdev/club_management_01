@@ -1,0 +1,59 @@
+<%= render "home/header" %>
+<section class="site-content site-section">
+  <div class="container">
+    <div class="row">
+      <div class="push-bit">
+        <h1 class="text-center"><%= t "profile_user" %></h1><br>
+      </div>
+      <div class="col-md-8">
+        <% if @user.clubs.any? %>
+              <div class="row" data-toggle="lightbox-gallery">
+                <div class="col-sm-6 push-bit">
+                  <%= link_to @user.clubs.first, class: "gallery-link" do %>
+                    <%= image_tag @user.clubs.first.image, class: "img-responsive push-bit" %>
+                  <% end %>
+                  <div class="row push-bit">
+                    <% @user.clubs.limit(Settings.per_page_event).each do |club| %>
+                      <div class="col-xs-4">
+                      <%= link_to club, class: "gallery-link" do %>
+                        <%= image_tag club.image, class: "img-responsive" %>
+                        <small class="text-muted"><%= club.name %></small>
+                      <% end %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="col-sm-6 push-bit">
+                  <div class="clearfix">
+                    <div class="pull-right">
+                      <span><strong>
+                        Members: <%= @user.clubs.first.users.size %>
+                      </strong></span>
+                    </div>
+                    <span class="h3"><strong class="text-success">
+                      <%= @user.clubs.first.name %>
+                    </strong><br><small>
+                    <div class="text-warning pull-left">
+                    <% (@user.clubs.first.rating).round.times do %>
+                      <i class="fa fa-star"></i>
+                    <% end %> (<%= @user.clubs.first.rating %> For Ratings)
+                </div>
+                </small></span>
+                </div>
+                <hr>
+                <p><%= @user.clubs.first.description %></p>
+                <hr>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <div class="col-md-4">
+        <aside class="sidebar site-block">
+          <div class="sidebar-block">
+            <%= render partial: "shared/profile", locals: {user: @user} %>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,7 +1,10 @@
 class ClubsController < ApplicationController
+  before_action :user_signed_in
   before_action :load_club, only: :show
 
   def index
+    @clubs = current_user.clubs.actives.newest.page(params[:page]).per Settings.club_per_page
+    @organizations = current_user.user_organizations.actives
   end
 
   def show

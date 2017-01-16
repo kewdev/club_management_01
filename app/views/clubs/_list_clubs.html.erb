@@ -1,0 +1,134 @@
+<section class="site-content site-section">
+  <div class="container">
+    <div class="row">
+      <div class="push-bit">
+        <h1 class="text-center"><%= title_page %></h1><br>
+      </div>
+      <div class="col-md-4 col-lg-3">
+        <aside class="sidebar site-block">
+          <div class="sidebar-block">
+            <form action="ecom_search_results.html" method="post" class="form-horizontal">
+              <div class="form-group push-bit">
+                <div class="col-xs-12">
+                  <div class="input-group">
+                    <input type="text" id="ecom-search" name="ecom-search" class="form-control" placeholder="Name Club...">
+                    <div class="input-group-btn">
+                      <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div><hr>
+              <h4><strong>Filters</strong></h4>
+              <div class="form-group">
+                <div class="col-sm-8">
+                  <select id="ecom-filter-condition" name="ecom-filter-condition" class="form-control" size="1">
+                    <option value="0" disabled selected>Hobbies</option>
+                    <option value="new">FootBall</option>
+                    <option value="used">Game</option>
+                    <option value="used">Sing</option>
+                    <option value="used">English</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-8">
+                  <select id="ecom-filter-rating" name="ecom-filter-rating" class="form-control" size="1">
+                    <option value="0" disabled selected>Rating</option>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Stars</option>
+                  </select>
+                </div>
+              </div><hr>
+              <h4 class="-header"><strong>Organizations</strong></h4>
+              <div class="form-group">
+                <% current_user.organizations.each do |organization| %>
+                  <div class="col-xs-12">
+                    <label class="radio-inline" for="organization-radio<%= organization.id %>">
+                    <input type="radio" id="organization-radio<%= organization.id %>"
+                      name="organizations" value="<%= organization.id %>">
+                      <%= organization.name %>
+                  </div>
+                <% end %>
+                <hr>
+              </div>
+            </form>
+          </div>
+          <div class="sidebar-block">
+            <div class="row">
+              <div class="col-xs-6 push-bit">
+                  <input type="button" class="btn btn-xs btn-default push load-more-toggle" value="Load More">
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+      <div class="col-md-8 col-lg-9">
+        <div class="form-inline push-bit clearfix">
+          <div class="pull-right" id="results-show">
+            <ul class="pagination">
+              <li class="disabled"><a href="javascript:void(0)"><i class="fa fa-arrow-left"></i></a></li>
+              <li class="active"><a href="javascript:void(0)">1</a></li>
+              <li><a href="javascript:void(0)">2</a></li>
+              <li><a href="javascript:void(0)">3</a></li>
+              <li><a href="javascript:void(0)">4</a></li>
+              <li><a href="javascript:void(0)"><i class="fa fa-arrow-right"></i></a></li>
+            </ul>
+          </div>
+
+          <select id="results-sort" name="results-sort" class="form-control" size="1">
+            <option value="0" disabled selected>SORT BY</option>
+            <option value="2">Name (A to Z)</option>
+            <option value="3">Name (Z to A)</option>
+            <option value="4">Rating (Lowest to Highest)</option>
+            <option value="5">Rating (Highest to Lowest)</option>
+            <option value="6">Members (Lowest to Highest)</option>
+            <option value="7">Members (Highest to Lowest)</option>
+            <option value="8">Money (Lowest to Highest)</option>
+            <option value="9">Money (Highest to Lowest)</option>
+          </select>
+        </div>
+        <div class="row store-items">
+          <% clubs.each do |club| %>
+            <div class="col-md-6 visibility-none" data-toggle="animation-appear"
+              data-animation-class="animation-fadeInQuick" data-element-offset="-100">
+              <div class="store-item">
+                <div class="store-item-rating text-warning">
+                  <% club.rating.round().times do || %>
+                    <i class="fa fa-star"></i>
+                  <% end %> (<%= club.rating %> For Ratings)
+                </div>
+                <div class="store-item-image">
+                    <%= link_to club do %>
+                      <%= image_tag club.image, class: "img-responsive" %>
+                    <% end %>
+                </div>
+                <div class="store-item-info clearfix">
+                  <span class="store-item-price themed-color-dark pull-left">
+                  <%= club.name %>
+                  </span>
+                  <small class="pull-left">
+                    <i class="fa fa-hand-o-right text-muted"></i>
+                    <%= link_to club do %>
+                      <%= club.description.truncate Settings.truncate_description %>
+                    <% end %>
+                  </small>
+                  <div>
+                    <%= link_to club do %>
+                      <strong class="pull-right fa fa-users"> Member: <%= club.users.size %></strong>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="row form-group col-sm-9 pull-right">
+      <%= paginate clubs %>
+    </div>
+  </div>
+</section>

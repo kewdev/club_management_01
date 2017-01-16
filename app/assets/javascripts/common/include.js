@@ -3,7 +3,6 @@ $(document).on('turbolinks:load', function() {
   turbolink_app();
   $('.select-select2').select2();
   $('.input-slider').slider();
-  CKEDITOR.replace('ckeditor');
 });
 
 var turbolink_app = function(){
@@ -41,14 +40,12 @@ var turbolink_app = function(){
     });
 
     $(function () {
+      $(".list-cmt-time-line dt").slice(0, 2).show();
       var find_list = $(".load-more-comment");
-      for(i = 0; i < find_list.length; i++){
-        $("." + find_list[i].id + " dt").slice(0, 2).show();
-      }
       $(".load-more-comment").on('click', function(e) {
         e.preventDefault();
         var list = e.target.id;
-        $("." + list + " dt:hidden").slice(0, 5).slideDown();
+        $("." + list + ":hidden").slice(0, 3).slideDown();
       });
     });
   });

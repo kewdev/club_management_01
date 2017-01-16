@@ -66,8 +66,10 @@
       <hr>
     </div>
   </section>
-  <%= render partial: "events/comment", locals: {target: @event} if @event.comments.any? %>
-  <%= render "new_comment" %>
+  <div class="event-comment">
+    <%= render partial: "events/list_comments", locals: {target: @event} if @event.comments.any? %>
+  </div>
+  <%= render "new_comment", locals: {target: @event} %>
 </div>
 <div class="join-event-toggle-container">
   <%= render "user_events/join_event_toggle" %>

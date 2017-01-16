@@ -30,7 +30,7 @@
     <strong class="pull-right"><%= t "organizations" %></strong>
   </div>
   <div class="col-md-6 center">
-    <% organization.each do |organization| %>
+    <% user.organizations.each do |organization| %>
       <p><%= organization.name %></p>
     <% end %>
   </div>

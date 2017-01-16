@@ -14,11 +14,8 @@
         <td class="text-center"><%= request.description %></td>
         <td class="text-center"><%= request_status request %></td>
         <td class="text-center">
-        <%= link_to request_path(request, type: request.class.name),
-          remote: true, method: :delete, class: "btn btn-danger" do %>
-          <i class="fa fa-times"></i>
+          <%= delete_toggle request %>
         </td>
-        <% end %>
       </tr>
     <% end %>
   </tfoot>

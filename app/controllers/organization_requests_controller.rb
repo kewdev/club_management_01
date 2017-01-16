@@ -1,4 +1,14 @@
 class OrganizationRequestsController < ApplicationController
+  def index
+    @requests = current_user.organization_requests
+    if @request
+      binding.pry
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
   def new
     @request = OrganizationRequest.new
   end

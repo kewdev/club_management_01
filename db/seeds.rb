@@ -119,17 +119,17 @@ OrganizationRequest.create!(
   user_id: User.last.id,
   name: "Pixelz Inc",
   description: Faker::Lorem.paragraph,
-  phone: "09660725487",
-  email: "Pixelz@gmaiol.com",
+  phone: "09660725481",
+  email: "abc123@gmaiol.com",
   location: "Da Nang"
 )
 
 OrganizationRequest.create!(
-  user_id: User.last.id,
+  user_id: User.first.id,
   name: "Trong Nhan Inc",
   description: Faker::Lorem.paragraph,
-  phone: "09660725487",
-  email: "Pixelz@gmaiol.com",
+  phone: "09660725482",
+  email: "abc456@gmaiol.com",
   location: "Da Nang"
 )
 
@@ -137,8 +137,8 @@ OrganizationRequest.create!(
   user_id: User.last.id,
   name: "Tech Master Inc",
   description: Faker::Lorem.paragraph,
-  phone: "09660725487",
-  email: "Pixelz@gmaiol.com",
+  phone: "09660725483",
+  email: "abc789@gmaiol.com",
   location: "Da Nang"
 )
 

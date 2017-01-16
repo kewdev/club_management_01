@@ -6,9 +6,10 @@ max_for_limit: 5
 per_page: 5
 truncate_description: 90
 description_event: 360
-min_location: 15
+min_location: 5
 update: "Update"
 create: "Create"
+ratings: "Ratings"
 per_page_album: 9
 per_page_image: 12
 per_page_event: 6
@@ -24,3 +25,4 @@ new_detail: 20
 event_user: 6
 event_new: 2
 club_member: 6
+club_per_page: 4

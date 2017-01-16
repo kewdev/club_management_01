@@ -1,0 +1,31 @@
+<ul class="media-list push list-cmt-time-line">
+  <div class="push-bit"></div>
+  <% activity.comments.newest.each do |comment| %>
+  <dt class="<%= activity.id %>">
+    <a href="javascript:void(0)" class="pull-left">
+      <%= image_tag comment.user.avatar,
+        class: "img-circle pull-left img-user-time-line-small" %>
+    </a>
+    <div class="media-body">
+      <%= link_to comment.user do %>
+        <strong><%= comment.user.full_name %></strong>
+      <% end %>
+      <%= link_to "javascript:void(0)" do %>
+        <span class="text-muted"><small><em>
+          <%= time_ago_in_words comment.created_at %>
+        </em></small></span>
+      <% end %>
+      <p><%= comment.content %></p>
+    </div>
+  </dt>
+  <% end %>
+  <% if activity.comments.size > 2 %>
+    <a href="javascript:void(0)" class="btn btn-xs btn-default load-more-toggle" id="time-tree">
+      <small class="load-more-comment" id="<%= activity.id %>">Load More</small>
+    </a>
+  <% end %>
+  <dt class="media form-hide form-comment-<%= activity.id %>">
+    <%= render partial: "time_line_homes/form_comment",
+      locals: {target: activity} %>
+  </dt>
+</ul>

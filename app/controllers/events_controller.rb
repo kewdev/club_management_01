@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :user_signed_in
   before_action :load_club, :load_event, only: :show
 
   def show
