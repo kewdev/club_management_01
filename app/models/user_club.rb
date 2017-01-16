@@ -2,10 +2,11 @@ class UserClub < ApplicationRecord
   belongs_to :user
   belongs_to :club
 
-  scope :manager, ->{where is_manager: true}
-  scope :unactive, ->{where status: false}
-  scope :user_club, ->club_id do
-    where club_id: club_id
+  scope :manager, -> {where is_manager: true}
+  scope :unactive, -> {where status: false}
+
+  def self.of_club club
+    self.find_by club: club
   end
 
   delegate :name, to: :club, allow_nil: :true

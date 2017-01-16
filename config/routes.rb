@@ -44,11 +44,10 @@ Rails.application.routes.draw do
   resources :users do
     resources :club_requests, only: [:new, :create, :index, :destroy]
     resources :organization_requests, only: [:new, :create, :index, :destroy]
-    resources :clubs, only: :index
     resources :other_clubs, only: :index
   end
 
-  resources :clubs, only: :show do
+  resources :clubs, only: [:show, :index] do
     resources :events, only: :show
   end
 
@@ -58,4 +57,6 @@ Rails.application.routes.draw do
   resources :time_line_homes
   resources :comments
   resources :users, only: :show
+  resources :reason_leaves, only: [:index, :show, :create]
+  resources :user_clubs, only: [:create, :destroy]
 end

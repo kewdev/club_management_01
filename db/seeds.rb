@@ -61,7 +61,8 @@ Admin.create!(
     created_at: created_at,
     logo: logo,
     rating: rand(1..5),
-    image: image)
+    image: image,
+    is_active: true)
 end
 
 EventCategory.create!(
@@ -165,4 +166,41 @@ ClubRequest.create!(
   name: "Cau Long Club",
   description: Faker::Lorem.paragraph,
   action: "User send request"
+)
+
+UserOrganization.create!(
+  organization_id: 1,
+  user_id: 1,
+  status: true,
+  is_admin: false
+)
+UserOrganization.create!(
+  organization_id: 2,
+  user_id: 1,
+  status: true,
+  is_admin: false
+)
+UserOrganization.create!(
+  organization_id: 3,
+  user_id: 1,
+  status: true,
+  is_admin: false
+)
+UserOrganization.create!(
+  organization_id: 4,
+  user_id: 1,
+  status: true,
+  is_admin: false
+)
+UserOrganization.create!(
+  organization_id: 3,
+  user_id: 2,
+  status: true,
+  is_admin: false
+)
+UserOrganization.create!(
+  organization_id: 1,
+  user_id: 2,
+  status: true,
+  is_admin: false
 )

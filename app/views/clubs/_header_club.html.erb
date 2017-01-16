@@ -1,11 +1,9 @@
 <div class="media-container">
   <section class="site-section site-section-light site-section-top">
     <div class="container">
-      <%= link_to "#" do %>
-        <span class="site-top-avatar pull-right join-button animation-fadeIn360">
-          <%= t "join" %>
-        </span>
-      <% end %>
+      <div class="join-cancel-toggle-container">
+        <%= render "user_clubs/join_cancel_toggle" %>
+      </div>
       <h1 class="animation-slideDown"><strong><%= @club.name %></strong></h1>
       <span class="animation-slideUp hidden-xs rating-container">
         <%= render "ratings/rating" %>
